@@ -76,6 +76,10 @@ python dump_rnn.py weights.hdf5 ../src/rnn_data.c ../src/rnn_data.h
 
 实际操作rnn.h没什么用
 
+#### 量化问题
+RNNoise 采用8bit量化，具体操作是将权重和偏执限制在-0.5到+0.5之间
+这样写data.c时乘以256取整 可以char类型量化 另外在c语言dense中 out应该除以256
+
 ## easy compile and make (Autotools)
 以下是比较简单的 compile 和 make 方法 , 会产生一些 dirty files (原README). 新电脑需要安装automake
 ```
